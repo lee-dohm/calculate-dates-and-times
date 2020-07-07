@@ -1,16 +1,31 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import moment from 'moment'
+
+function getDeltaParams(text: string): [number, moment.unitOfTime.Base] {
+  const values = text.split(/\s+/)
+
+  return [parseInt(values[0]), values[1] as moment.unitOfTime.Base]
+}
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    const add = core.getInput('add')
+    const format = core.getInput('format')
+    const subtract = core.getInput('subtract')
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    let value = moment().utc()
 
-    core.setOutput('time', new Date().toTimeString())
+    if (add) {
+      const params = getDeltaParams(add)
+      value = value.add(...params)
+    }
+
+    if (subtract) {
+      const params = getDeltaParams(subtract)
+      value = value.subtract(...params)
+    }
+
+    core.setOutput('date', value.format(format))
   } catch (error) {
     core.setFailed(error.message)
   }

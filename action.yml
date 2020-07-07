@@ -1,5 +1,15 @@
 name: calculate-dates-and-times
 description: Generate a date or time to be used in a later Action
+inputs:
+  add:
+    description: An amount and value to add to the current date, _ex:_ `2 days`
+  format:
+    description: A format string correspending to the format function of moment.js
+  subtract:
+    description: An amount and value to subtract from the current date, _ex:_ `3 weeks`
+outputs:
+  date:
+    description: The resulting date and/or time
 runs:
   using: node12
   main: dist/index.js
