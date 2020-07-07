@@ -1,45 +1,40 @@
 {
-  "name": "typescript-action",
+  "name": "calculate-dates-and-times",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Generate a date or time to be used in a later Action ",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
-    "format": "prettier --write **/*.ts",
-    "format-check": "prettier --check **/*.ts",
-    "lint": "eslint src/**/*.ts",
-    "pack": "ncc build",
-    "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
+    "build": "npx ncc build ./src/main.ts",
+    "ci": "npm run format-check && npm test",
+    "format": "prettier --write **/*.ts **/*.md **/*.yaml **/*.yml",
+    "format-check": "prettier --check **/*.ts **/*.md **/*.yaml **/*.yml",
+    "start": "npx ncc run ./src/main.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/lee-dohm/calculate-dates-and-times.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "lee-dohm",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.4"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.7.12",
-    "@typescript-eslint/parser": "^2.8.0",
-    "@zeit/ncc": "^0.20.5",
-    "eslint": "^5.16.0",
-    "eslint-plugin-github": "^2.0.0",
-    "eslint-plugin-jest": "^22.21.0",
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "@zeit/ncc": "^0.22.3",
     "jest": "^24.9.0",
-    "jest-circus": "^24.9.0",
-    "js-yaml": "^3.13.1",
-    "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.6.4"
+    "jest-circus": "^26.1.0",
+    "js-yaml": "^3.14.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.9.6"
   }
 }
