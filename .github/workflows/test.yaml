@@ -24,7 +24,7 @@ jobs:
       - uses: ./
         id: result
         with:
-          format: "[tada]"
+          format: '[tada]'
       - run: exit 1
         name: "Fail unless steps.result.outputs.date == 'tada'"
         if: steps.result.outputs.date != 'tada'
