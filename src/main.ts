@@ -1,7 +1,13 @@
 import * as core from '@actions/core'
 import moment from 'moment'
 
-function getDeltaParams(text: string): [number, moment.unitOfTime.Base] {
+export function getDeltaParams(text: string): [number, moment.unitOfTime.Base] {
+  if (text.match(/^\s*$/)) {
+    throw new Error(
+      'A duration specification must be supplied such as "2 days", but none was given'
+    )
+  }
+
   const values = text.split(/\s+/)
 
   return [parseInt(values[0]), values[1] as moment.unitOfTime.Base]
