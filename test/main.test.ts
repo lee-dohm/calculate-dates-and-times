@@ -1,13 +1,13 @@
-import { getDeltaParams } from '../src/main'
+import { getDuration } from '../src/main'
 
-describe('getDeltaParams', () => {
+describe('getDuration', () => {
   it('returns the appropriate values', () => {
-    expect(getDeltaParams('2 days')).toStrictEqual([2, 'days'])
+    expect(getDuration('2 days')).toStrictEqual([2, 'days'])
   })
 
   it('throws when given an empty string', () => {
     expect(() => {
-      getDeltaParams('')
+      getDuration('')
     }).toThrowError()
   })
 })

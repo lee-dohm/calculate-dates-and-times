@@ -1,7 +1,15 @@
 import * as core from '@actions/core'
 import moment from 'moment'
 
-export function getDeltaParams(text: string): [number, moment.unitOfTime.Base] {
+/** A `moment`-compatible duration description */
+type Duration = [number, moment.unitOfTime.Base]
+
+/**
+ * Splits the text description of the duration into the parameters expected by `moment`.
+ *
+ * @param text Text description of the duration
+ */
+export function getDuration(text: string): Duration {
   if (text.match(/^\s*$/)) {
     throw new Error(
       'A duration specification must be supplied such as "2 days", but none was given'
@@ -22,12 +30,16 @@ async function run(): Promise<void> {
     let value = moment().utc()
 
     if (add) {
-      const params = getDeltaParams(add)
+      core.debug(`Add ${add} to ${value.format()}`)
+
+      const params = getDuration(add)
       value = value.add(...params)
     }
 
     if (subtract) {
-      const params = getDeltaParams(subtract)
+      core.debug(`Subtract ${subtract} from ${value.format()}`)
+
+      const params = getDuration(subtract)
       value = value.subtract(...params)
     }
 
