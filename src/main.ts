@@ -1,8 +1,14 @@
 import * as core from '@actions/core'
 import moment from 'moment'
 
+/** A `moment`-compatible duration description */
 type Duration = [number, moment.unitOfTime.Base]
 
+/**
+ * Splits the text description of the duration into the parameters expected by `moment`.
+ *
+ * @param text Text description of the duration
+ */
 export function getDuration(text: string): Duration {
   if (text.match(/^\s*$/)) {
     throw new Error(
