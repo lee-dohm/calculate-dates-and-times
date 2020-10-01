@@ -24,7 +24,7 @@
   "author": "lee-dohm",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "moment": "^2.28.0"
   },
   "devDependencies": {
