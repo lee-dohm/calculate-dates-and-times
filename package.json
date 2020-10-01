@@ -28,7 +28,7 @@
     "moment": "^2.28.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.13",
+    "@types/jest": "^26.0.14",
     "@types/node": "^14.10.1",
     "@vercel/ncc": "^0.24.1",
     "jest": "^24.9.0",
