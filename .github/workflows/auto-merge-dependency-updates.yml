@@ -13,4 +13,3 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           allowed-actors: dependabot-preview[bot], dependabot[bot]
-          
