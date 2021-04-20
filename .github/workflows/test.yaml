@@ -6,7 +6,10 @@ on:
   pull_request:
   push:
     branches:
-      - primary
+      - main
+
+permissions:
+  contents: read
 
 jobs:
   unitTest:
@@ -18,6 +21,7 @@ jobs:
         run: npm ci
       - name: Execute tests
         run: npm run ci
+
   integrationTest:
     runs-on: ubuntu-latest
     steps:
