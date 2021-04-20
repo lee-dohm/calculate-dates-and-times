@@ -22,7 +22,7 @@ jobs:
       - name: Build the Action
         run: npm run build
       - name: Update the release with the built Action and standardize tags
-        uses: JasonEtco/build-and-tag-action@v1
+        uses: JasonEtco/build-and-tag-action@v2
         with:
           setup: ''
         env:
